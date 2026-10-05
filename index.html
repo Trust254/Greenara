@@ -16,7 +16,7 @@
             --accent-glow: rgba(0, 255, 136, 0.15);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: 20px; }
+        body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
 
         /* Utility */
         .hidden { display: none !important; }
@@ -32,7 +32,8 @@
         .auth-card { background: var(--card-bg); border: 2px solid var(--neon-green); width: 100%; max-width: 420px; padding: 30px; border-radius: 16px; box-shadow: 0 0 30px rgba(0,255,136,0.1); }
 
         .auth-logo-box { width: 70px; height: 70px; background: linear-gradient(135deg, #00ff88, #113322); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; box-shadow: 0 0 15px rgba(0,255,136,0.3); font-size: 2rem; }
-        
+        .header-logo-box { width: 42px; height: 42px; background: linear-gradient(135deg, #00ff88, #113322); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0,255,136,0.2); font-size: 1.3rem; flex-shrink: 0; }
+
         .auth-title { text-align: center; font-size: 1.6rem; color: var(--neon-green); margin-bottom: 5px; font-weight: 800; }
         .auth-sub { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px; }
         .form-group { margin-bottom: 15px; }
@@ -40,77 +41,86 @@
         .form-control { width: 100%; padding: 12px; background: #050a08; border: 1px solid var(--card-border); border-radius: 8px; color: white; font-size: 0.95rem; }
         .form-control:focus { outline: none; border-color: var(--neon-green); box-shadow: 0 0 8px var(--accent-glow); }
 
-        /* Main Mobile Container Card matching screenshot */
-        .main-app-card { background: var(--card-bg); border: 2px solid var(--neon-green); width: 100%; max-width: 440px; padding: 25px; border-radius: 18px; box-shadow: 0 0 30px rgba(0,255,136,0.12); display: flex; flex-direction: column; align-items: center; margin-top: 10px; }
-        
-        .app-logo-icon { width: 65px; height: 65px; background: linear-gradient(135deg, #00ff88, #113322); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: 0 0 15px rgba(0,255,136,0.3); font-size: 1.8rem; }
-        .app-brand-name { font-size: 1.6rem; font-weight: 800; color: var(--neon-green); margin-bottom: 4px; text-align: center; }
-        .app-brand-sub { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; text-align: center; }
+        /* Main Dashboard Header */
+        header { background: linear-gradient(180deg, #0d1a13 0%, var(--bg-dark) 100%); border-bottom: 1px solid var(--card-border); padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); }
+        .brand-wrapper { display: flex; align-items: center; gap: 12px; }
+        .brand-info h1 { font-size: 1.25rem; font-weight: 800; color: var(--neon-green); letter-spacing: 0.5px; }
+        .brand-info span { font-size: 0.75rem; color: var(--text-muted); }
 
-        /* Balance Box */
-        .balance-box { width: 100%; background: #050a08; border: 1px solid var(--gold); border-radius: 12px; padding: 18px; text-align: center; margin-bottom: 22px; box-shadow: inset 0 0 10px rgba(243,198,20,0.05); }
-        .balance-title { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .balance-amount { font-size: 1.6rem; font-weight: 800; color: var(--gold); }
+        .user-pill { background: var(--card-bg); border: 1px solid var(--card-border); padding: 8px 16px; border-radius: 20px; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; }
+        .user-pill span { color: var(--gold); font-weight: 700; }
 
-        /* Menu Action Buttons Stack */
-        .menu-list { width: 100%; display: flex; flex-direction: column; gap: 12px; margin-bottom: 10px; }
-        .menu-btn { width: 100%; padding: 14px 18px; background: #0c1811; border: 1px solid var(--card-border); border-radius: 10px; color: var(--text-main); font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 12px; text-align: left; transition: 0.2s ease; text-decoration: none; }
-        .menu-btn:hover { border-color: var(--neon-green); background: rgba(0,255,136,0.05); transform: translateY(-1px); }
-        .menu-btn.logout-btn { border-color: #5c2323; color: #ff6b6b; }
-        .menu-btn.logout-btn:hover { border-color: #ff4d4d; background: rgba(255,77,77,0.05); }
+        /* Main Content Layout */
+        .main-container { max-width: 1200px; margin: 0 auto; width: 100%; padding: 25px; flex: 1; }
 
-        /* General Buttons */
+        /* Explainer Banner */
+        .banner { background: linear-gradient(135deg, #102219, #0d1a13); border: 1px solid #1f3b2d; border-left: 5px solid var(--gold); padding: 20px; border-radius: 12px; margin-bottom: 25px; }
+        .banner h3 { color: var(--gold); font-size: 1.05rem; margin-bottom: 8px; }
+        .banner p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* Action Buttons Bar */
+        .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 30px; }
         .btn { padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; cursor: pointer; border: none; transition: 0.2s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
         .btn-green { background: var(--neon-green); color: var(--bg-dark); box-shadow: 0 0 15px rgba(0,255,136,0.2); }
-        .btn-green:hover { background: #00cc6a; }
+        .btn-green:hover { background: #00cc6a; transform: translateY(-2px); }
         .btn-gold { background: var(--gold); color: var(--bg-dark); box-shadow: 0 0 15px rgba(243,198,20,0.2); }
-        .btn-gold:hover { background: #d4af37; }
+        .btn-gold:hover { background: #d4af37; transform: translateY(-2px); }
         .btn-outline { background: transparent; border: 1px solid var(--card-border); color: var(--text-main); }
+        .btn-outline:hover { border-color: var(--neon-green); background: rgba(0,255,136,0.05); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
 
-        /* Levels Catalog Container View */
-        #levels-view { width: 100%; max-width: 900px; display: none; padding-bottom: 40px; }
-        .section-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--card-border); padding-bottom: 12px; }
-        .levels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+        /* Levels Grid */
+        .section-heading { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
+        .levels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
 
-        .level-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; position: relative; }
+        .level-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; position: relative; }
+        .level-card:hover { border-color: rgba(0,255,136,0.4); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
         .level-card.unlocked { border-color: var(--neon-green); }
-        .level-img-wrap { width: 100%; height: 150px; position: relative; background: #040806; overflow: hidden; }
-        .level-img-wrap img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
-        .status-badge { position: absolute; top: 10px; right: 10px; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+
+        .level-img-wrap { width: 100%; height: 180px; position: relative; background: #040806; overflow: hidden; }
+        .level-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; opacity: 0.85; }
+        .level-card:hover .level-img-wrap img { transform: scale(1.05); opacity: 1; }
+        .status-badge { position: absolute; top: 12px; right: 12px; padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; backdrop-filter: blur(5px); }
         .badge-free { background: rgba(0,255,136,0.9); color: var(--bg-dark); }
         .badge-locked { background: rgba(243,198,20,0.9); color: var(--bg-dark); }
         .badge-active { background: rgba(0,255,136,0.2); border: 1px solid var(--neon-green); color: var(--neon-green); }
 
-        .level-body { padding: 15px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
-        .level-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
-        .level-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.3; }
-        .stat-row { display: flex; justify-content: space-between; font-size: 0.8rem; padding: 6px 0; border-top: 1px solid #162a1e; margin-bottom: 12px; }
+        .level-body { padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
+        .level-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+        .level-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.4; }
+        .stat-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 8px 0; border-top: 1px solid #162a1e; margin-bottom: 15px; }
         .stat-row span:last-child { font-weight: 700; color: var(--neon-green); }
 
         /* Modals */
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: var(--card-bg); border: 1px solid var(--card-border); width: 100%; max-width: 500px; border-radius: 16px; padding: 25px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .modal-header h2 { font-size: 1.2rem; color: var(--neon-green); font-weight: 800; }
-        .close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; }
+        .modal-content { background: var(--card-bg); border: 1px solid var(--card-border); width: 100%; max-width: 540px; border-radius: 16px; padding: 30px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h2 { font-size: 1.3rem; color: var(--neon-green); font-weight: 800; }
+        .close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+        .close-btn:hover { color: white; }
 
-        .mpesa-instruction { background: #050a08; border: 1px solid var(--gold); border-radius: 10px; padding: 12px; text-align: center; margin: 12px 0; }
-        .mpesa-brand { background: #4CAF50; color: white; padding: 3px 8px; font-size: 0.7rem; font-weight: 900; border-radius: 4px; display: inline-block; margin-bottom: 6px; }
+        .mpesa-instruction { background: #050a08; border: 1px solid var(--gold); border-radius: 10px; padding: 15px; text-align: center; margin: 15px 0; }
+        .mpesa-brand { background: #4CAF50; color: white; padding: 4px 10px; font-size: 0.75rem; font-weight: 900; border-radius: 4px; display: inline-block; margin-bottom: 8px; letter-spacing: 1px; }
 
-        /* Admin Dashboard & Support Tables */
-        .admin-section { margin-top: 10px; }
-        .admin-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.8rem; }
-        .admin-table th, .admin-table td { border: 1px solid var(--card-border); padding: 8px; text-align: left; }
+        /* Admin / Support Dashboard */
+        .admin-section { margin-top: 15px; }
+        .admin-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; }
+        .admin-table th, .admin-table td { border: 1px solid var(--card-border); padding: 10px; text-align: left; }
         .admin-table th { background: #0c1811; color: var(--gold); }
-        .tab-nav { display: flex; gap: 6px; margin-bottom: 12px; border-bottom: 1px solid var(--card-border); padding-bottom: 8px; flex-wrap: wrap; }
-        .tab-btn { background: none; border: none; color: var(--text-muted); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-weight: 600; font-size: 0.8rem; }
+        .tab-nav { display: flex; gap: 8px; margin-bottom: 15px; border-bottom: 1px solid var(--card-border); padding-bottom: 10px; flex-wrap: wrap; }
+        .tab-btn { background: none; border: none; color: var(--text-muted); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem; }
         .tab-btn.active { background: var(--neon-green); color: var(--bg-dark); }
 
-        /* Floating Support & AI */
-        .floating-support { position: fixed; bottom: 20px; right: 20px; background: var(--neon-green); color: var(--bg-dark); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 20px rgba(0,255,136,0.4); cursor: pointer; z-index: 100; }
-        .floating-ai { position: fixed; bottom: 85px; right: 20px; background: var(--gold); color: var(--bg-dark); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 4px 20px rgba(243,198,20,0.4); cursor: pointer; z-index: 100; }
-        .ai-chat-box { display: flex; flex-direction: column; height: 300px; background: #050a08; border: 1px solid var(--card-border); border-radius: 8px; padding: 10px; overflow-y: auto; margin-bottom: 12px; gap: 8px; font-size: 0.85rem; }
-        .ai-msg { padding: 8px 12px; border-radius: 6px; max-width: 85%; line-height: 1.3; }
+        /* Floating Widgets (Support & AI Assistant) */
+        .floating-support { position: fixed; bottom: 25px; right: 25px; background: var(--neon-green); color: var(--bg-dark); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: 0 4px 20px rgba(0,255,136,0.4); cursor: pointer; z-index: 100; transition: transform 0.2s; }
+        .floating-support:hover { transform: scale(1.1); }
+
+        .floating-ai { position: fixed; bottom: 95px; right: 25px; background: var(--gold); color: var(--bg-dark); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; box-shadow: 0 4px 20px rgba(243,198,20,0.4); cursor: pointer; z-index: 100; transition: transform 0.2s; }
+        .floating-ai:hover { transform: scale(1.1); }
+
+        /* AI Chat Modal */
+        .ai-chat-box { display: flex; flex-direction: column; height: 350px; background: #050a08; border: 1px solid var(--card-border); border-radius: 10px; padding: 12px; overflow-y: auto; margin-bottom: 15px; gap: 10px; font-size: 0.9rem; }
+        .ai-msg { padding: 10px 14px; border-radius: 8px; max-width: 85%; line-height: 1.4; }
         .ai-msg.bot { background: #15291e; color: var(--text-main); align-self: flex-start; border-left: 3px solid var(--gold); }
         .ai-msg.user { background: rgba(0,255,136,0.15); color: var(--neon-green); align-self: flex-end; border-right: 3px solid var(--neon-green); }
     </style>
@@ -140,48 +150,48 @@
         </div>
     </div>
 
-    <!-- Main Dashboard View (Matches Screenshot Layout) -->
-    <div id="main-dashboard-view" class="main-app-card hidden">
-        <div class="app-logo-icon">⚡</div>
-        <div class="app-brand-name">Greenara</div>
-        <div class="app-brand-sub">Kenya's Digital Asset Tap & Earn Platform</div>
-
-        <div class="balance-box">
-            <div class="balance-title">Available Balance</div>
-            <div class="balance-amount"><span id="user-balance">30.00</span> Ksh</div>
-        </div>
-
-        <div class="menu-list">
-            <button class="menu-btn" onclick="showLevelsView()">
-                <span>⚡</span> Earning Asset Levels
-            </button>
-            <button class="menu-btn" onclick="openDepositModal()">
-                <span>📥</span> Deposit / Top Up
-            </button>
-            <button class="menu-btn" onclick="openWithdrawModal()">
-                <span>💰</span> Withdraw Funds
-            </button>
-            <button class="menu-btn" onclick="openComplaintModal()">
-                <span>💬</span> Send Complaint / Ticket
-            </button>
-            <button class="menu-btn logout-btn" onclick="handleLogout()">
-                <span>🚪</span> Logout
-            </button>
-        </div>
-    </div>
-
-    <!-- Earning Asset Levels Catalog View -->
-    <div id="levels-view">
-        <div class="section-header-bar">
-            <div>
-                <h2 style="color: var(--neon-green); font-size: 1.2rem;">Earning Asset Levels</h2>
-                <span style="font-size: 0.8rem; color: var(--text-muted);">6 Taps Daily per Unlocked Level</span>
+    <!-- Main Application Header -->
+    <header>
+        <div class="brand-wrapper">
+            <div class="header-logo-box">⚡</div>
+            <div class="brand-info">
+                <h1>Greenara</h1>
+                <span>Verified KES Earning System</span>
             </div>
-            <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="showDashboardView()">⬅ Back to Dashboard</button>
         </div>
+        <div class="user-pill">
+            <span>👤 <span id="display-user">User</span></span>
+            <span>💰 <span id="user-balance">30.00</span> Ksh</span>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <div class="main-container">
+
+        <!-- Explainer Banner -->
+        <div class="banner">
+            <h3>How to Activate Levels & Start Earning</h3>
+            <p><strong>Level 1 (Iron Box)</strong> is completely <strong>FREE</strong> upon registration! Open Level 1, tap your 6 daily taps to collect 5 Ksh per tap (total 30 Ksh/day). After finishing your 6 daily taps, a 12-hour countdown begins before you can tap again. For higher levels, pay via Lipa na M-Pesa (Activation Fee + User Deposit Fee). Once approved by Customer Support, your deposit fee is instantly credited to your dashboard balance available for withdrawal, and your level unlocks!</p>
+        </div>
+
+        <!-- Quick Action Bar -->
+        <div class="action-grid">
+            <button class="btn btn-green" onclick="openDepositModal()">Deposit / Top Up</button>
+            <button class="btn btn-gold" onclick="openWithdrawModal()">Withdraw Funds</button>
+            <button class="btn btn-outline" onclick="copyInviteLink()">🔗 Copy Invite Link (+3% Bonus)</button>
+            <button class="btn btn-outline" onclick="openComplaintModal()">💬 Send Complaint / Ticket</button>
+        </div>
+
+        <!-- Levels Catalog -->
+        <div class="section-heading">
+            <span>Earning Asset Levels</span>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">6 Taps Daily per Unlocked Level</span>
+        </div>
+
         <div class="levels-grid" id="levels-container">
             <!-- Dynamically rendered via JS -->
         </div>
+
     </div>
 
     <!-- Payment / Activation Modal -->
@@ -191,13 +201,13 @@
                 <h2 id="payment-modal-title">Level Activation</h2>
                 <button class="close-btn" onclick="closeModal('payment-modal')">&times;</button>
             </div>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Make your payment via Lipa na M-Pesa to unlock automated daily earnings:</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">Make your payment via Lipa na M-Pesa to unlock automated daily earnings:</p>
 
             <div class="mpesa-instruction">
                 <div class="mpesa-brand">LIPA NA M-PESA</div>
                 <p><strong>Paybill:</strong> 522533</p>
                 <p><strong>Account Number:</strong> 8012296</p>
-                <p id="payment-amount-display" style="color: var(--gold); margin-top: 8px; font-weight: 700; white-space: pre-line;"></p>
+                <p id="payment-amount-display" style="color: var(--gold); margin-top: 10px; font-weight: 700;"></p>
             </div>
 
             <div class="form-group">
@@ -205,13 +215,13 @@
                 <input type="text" id="mpesa-code-input" class="form-control" placeholder="Enter transaction message code">
             </div>
 
-            <button class="btn btn-green" style="width: 100%; margin-top: 8px;" onclick="submitActivationRequest()">Submit Request to Support</button>
+            <button class="btn btn-green" style="width: 100%; margin-top: 10px;" onclick="submitActivationRequest()">Submit Request to Support</button>
         </div>
     </div>
 
     <!-- AI Assistant Robot Modal -->
     <div id="ai-modal" class="modal">
-        <div class="modal-content" style="max-width: 440px;">
+        <div class="modal-content" style="max-width: 480px;">
             <div class="modal-header">
                 <h2>🤖 GreenBot AI Assistant</h2>
                 <button class="close-btn" onclick="closeModal('ai-modal')">&times;</button>
@@ -235,7 +245,7 @@
             </div>
             <div class="form-group">
                 <label>Describe your issue or question</label>
-                <textarea id="complaint-text" class="form-control" rows="3" placeholder="e.g. Delay in activating my microwave level..."></textarea>
+                <textarea id="complaint-text" class="form-control" rows="4" placeholder="e.g. Delay in activating my microwave level..."></textarea>
             </div>
             <button class="btn btn-green" style="width: 100%;" onclick="submitComplaint()">Send to Customer Support</button>
         </div>
@@ -243,7 +253,7 @@
 
     <!-- Customer Support Dashboard Modal -->
     <div id="admin-modal" class="modal">
-        <div class="modal-content" style="max-width: 900px;">
+        <div class="modal-content" style="max-width: 950px;">
             <div class="modal-header">
                 <h2>Customer Support & Admin Control Center</h2>
                 <button class="close-btn" onclick="closeModal('admin-modal')">&times;</button>
@@ -263,8 +273,8 @@
                         <tr>
                             <th>User</th>
                             <th>Level Requested</th>
-                            <th>Activation Fee</th>
-                            <th>Deposit Fee</th>
+                            <th>Activation Fee (Support)</th>
+                            <th>Deposit Fee (User Bal)</th>
                             <th>M-Pesa Code</th>
                             <th>Action</th>
                         </tr>
@@ -324,17 +334,24 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
     </div>
 
-    <!-- Floating Support & AI Buttons -->
-    <div class="floating-ai" onclick="openAiModal()" title="GreenBot AI Assistant">🤖</div>
-    <div class="floating-support" onclick="openAdminPortal()" title="Customer Support Portal">💬</div>
+    <!-- Floating Assistant & Support Buttons -->
+    <div class="floating-ai" onclick="openAiModal()" title="GreenBot AI Assistant">
+        🤖
+    </div>
+    <div class="floating-support" onclick="openAdminPortal()" title="Customer Support / Admin Login">
+        💬
+    </div>
 
     <script>
+        // Data Structures & State
         let currentUser = null;
         let userBalance = 30.00;
 
+        // Levels Data with Activation Fee & Deposit Fee split
         const levelsData = [
             { id: 1, name: "Iron Box", img: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=600&auto=format&fit=crop&q=80", activationFee: 0, depositFee: 0, dailyPayout: 30, perTap: 5, tapsLeft: 6, cooldownEnd: 0 },
             { id: 2, name: "Microwave", img: "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&auto=format&fit=crop&q=80", activationFee: 800, depositFee: 2000, dailyPayout: 150, perTap: 25, tapsLeft: 6, cooldownEnd: 0 },
@@ -344,6 +361,7 @@
             { id: 6, name: "Lamborghini", img: "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=600&auto=format&fit=crop&q=80", activationFee: 80000, depositFee: 150000, dailyPayout: 22500, perTap: 3750, tapsLeft: 6, cooldownEnd: 0 }
         ];
 
+        // Shared Simulated Backend State
         let allRegisteredUsers = [
             { username: "0712345678", balance: 30, levelsUnlocked: [1], status: "Active" },
             { username: "0798765432", balance: 2030, levelsUnlocked: [1, 2], status: "Active" }
@@ -353,6 +371,7 @@
         let complaintsList = [];
         let selectedLevelForPayment = null;
 
+        // Authentication Handler
         function handleAuthentication() {
             let u = document.getElementById('auth-username').value.trim();
             let p = document.getElementById('auth-password').value.trim();
@@ -373,33 +392,14 @@
                 userBalance = existing.balance;
             }
 
+            document.getElementById('display-user').innerText = u;
             document.getElementById('user-balance').innerText = userBalance.toFixed(2);
             document.getElementById('auth-container').style.display = 'none';
-            document.getElementById('main-dashboard-view').classList.remove('hidden');
             renderLevels();
             setInterval(updateCooldowns, 1000);
         }
 
-        function handleLogout() {
-            currentUser = null;
-            document.getElementById('main-dashboard-view').classList.add('hidden');
-            document.getElementById('levels-view').style.display = 'none';
-            document.getElementById('auth-container').style.display = 'flex';
-            document.getElementById('auth-username').value = '';
-            document.getElementById('auth-password').value = '';
-        }
-
-        function showLevelsView() {
-            document.getElementById('main-dashboard-view').classList.add('hidden');
-            document.getElementById('levels-view').style.display = 'block';
-            renderLevels();
-        }
-
-        function showDashboardView() {
-            document.getElementById('levels-view').style.display = 'none';
-            document.getElementById('main-dashboard-view').classList.remove('hidden');
-        }
-
+        // Render Levels Catalog
         function renderLevels() {
             let container = document.getElementById('levels-container');
             container.innerHTML = "";
@@ -432,22 +432,22 @@
                         <div class="level-body">
                             <div>
                                 <div class="level-title">Level ${lvl.id}: ${lvl.name}</div>
-                                <div class="level-meta">${lvl.id === 1 ? 'Free welcome asset.' : `Total: ${totalFee.toLocaleString()} Ksh`}</div>
+                                <div class="level-meta">${lvl.id === 1 ? 'Free welcome asset for new joiners.' : `Total: ${totalFee.toLocaleString()} Ksh (Activation: ${lvl.activationFee.toLocaleString()} + Deposit:${lvl.depositFee.toLocaleString()})`}</div>
                                 <div class="stat-row">
                                     <span>Daily Payout</span>
-                                    <span>${lvl.dailyPayout.toLocaleString()} Ksh</span>
+                                    <span>${lvl.dailyPayout.toLocaleString()} Ksh (${lvl.perTap} Ksh/tap)</span>
                                 </div>
                             </div>
                             <div>
                                 ${isUnlocked ? `
-                                    <div style="font-size: 0.8rem; color: var(--neon-green); margin-bottom: 6px; font-weight: 700;">
-                                        ${inCooldown ? `⏳ <span id="cd-${lvl.id}" style="color: var(--gold);">${timeLeftStr}</span>` : `Taps: <span id="taps-${lvl.id}">${lvl.tapsLeft}</span>/6`}
+                                    <div style="font-size: 0.85rem; color: var(--neon-green); margin-bottom: 8px; font-weight: 700;">
+                                        ${inCooldown ? `⏳ Cooldown: <span id="cd-${lvl.id}" style="color: var(--gold);">${timeLeftStr}</span>` : `Taps Remaining: <span id="taps-${lvl.id}">${lvl.tapsLeft}</span>/6`}
                                     </div>
-                                    <button id="tap-btn-${lvl.id}" class="btn btn-green" style="width: 100%; padding: 8px; font-size: 0.85rem;" ${inCooldown ? 'disabled' : ''} onclick="tapAsset(${lvl.id})">
-                                        ${inCooldown ? 'In Cooldown' : `Tap & Earn (${lvl.perTap} Ksh)`}
+                                    <button id="tap-btn-${lvl.id}" class="btn btn-green" style="width: 100%;" ${inCooldown ? 'disabled' : ''} onclick="tapAsset(${lvl.id})">
+                                        ${inCooldown ? 'Waiting for Cooldown...' : `Tap & Earn (${lvl.perTap} Ksh)`}
                                     </button>
                                 ` : `
-                                    <button class="btn btn-gold" style="width: 100%; padding: 8px; font-size: 0.85rem;" onclick="openPaymentModal(${lvl.id})">Unlock (${totalFee.toLocaleString()} Ksh)</button>
+                                    <button class="btn btn-gold" style="width: 100%;" onclick="openPaymentModal(${lvl.id})">Unlock Level (${totalFee.toLocaleString()} Ksh)</button>
                                 `}
                             </div>
                         </div>
@@ -457,12 +457,14 @@
             });
         }
 
+        // Live Cooldown Updater
         function updateCooldowns() {
             let now = Date.now();
             levelsData.forEach(lvl => {
                 if(lvl.cooldownEnd > 0) {
                     let diff = Math.floor((lvl.cooldownEnd - now) / 1000);
                     let cdElem = document.getElementById(`cd-${lvl.id}`);
+
                     if(diff > 0) {
                         let hrs = Math.floor(diff / 3600);
                         let mins = Math.floor((diff % 3600) / 60);
@@ -477,6 +479,7 @@
             });
         }
 
+        // Tap Action Logic & 12hr Cooldown Trigger
         function tapAsset(lvlId) {
             let lvl = levelsData.find(x => x.id === lvlId);
             if(lvl.tapsLeft > 0) {
@@ -492,19 +495,20 @@
 
                 if(lvl.tapsLeft === 0) {
                     lvl.cooldownEnd = Date.now() + (12 * 60 * 60 * 1000);
-                    alert(`Completed all 6 taps for Level ${lvlId}! 12-hour countdown has started.`);
+                    alert(`Fantastic! You have finished all 6 taps for Level ${lvlId}. A 12-hour countdown has now started before your next earning cycle.`);
                     renderLevels();
                 } else {
-                    alert(`Earned ${lvl.perTap} Ksh from Level ${lvlId}!`);
+                    alert(`Success! Earned ${lvl.perTap} Ksh from Level ${lvlId} (${lvl.name}).`);
                 }
             }
         }
 
+        // Modals Control
         function openPaymentModal(lvlId) {
             selectedLevelForPayment = levelsData.find(x => x.id === lvlId);
             let total = selectedLevelForPayment.activationFee + selectedLevelForPayment.depositFee;
             document.getElementById('payment-modal-title').innerText = `Unlock Level ${lvlId}: ${selectedLevelForPayment.name}`;
-            document.getElementById('payment-amount-display').innerText = `Total Amount: ${total.toLocaleString()} Ksh\n(Activation: ${selectedLevelForPayment.activationFee.toLocaleString()} | Deposit Balance: ${selectedLevelForPayment.depositFee.toLocaleString()})`;
+            document.getElementById('payment-amount-display').innerText = `Total Amount: ${total.toLocaleString()} Ksh\n(Activation Fee: ${selectedLevelForPayment.activationFee.toLocaleString()} | Deposit Fee added to your balance: ${selectedLevelForPayment.depositFee.toLocaleString()})`;
             document.getElementById('payment-modal').style.display = 'flex';
         }
 
@@ -525,11 +529,18 @@
                     let uObj = allRegisteredUsers.find(x => x.username === currentUser);
                     if(uObj) uObj.balance = userBalance;
 
-                    withdrawalRequests.push({ user: currentUser, amount: amountVal, status: "Pending" });
-                    alert(`Withdrawal request for ${amountVal} Ksh submitted successfully.`);
+                    withdrawalRequests.push({
+                        user: currentUser,
+                        amount: amountVal,
+                        status: "Pending"
+                    });
+
+                    alert(`Withdrawal request for ${amountVal} Ksh submitted to Customer Support successfully. Pending payout verification.`);
                 } else {
                     alert("Insufficient balance for this withdrawal.");
                 }
+            } else if(amt !== null) {
+                alert("Please enter a valid withdrawal amount.");
             }
         }
 
@@ -548,32 +559,43 @@
         function submitActivationRequest() {
             let code = document.getElementById('mpesa-code-input').value.trim();
             if(!code) {
-                alert("Please enter your M-Pesa confirmation code.");
+                alert("Please enter your M-Pesa transaction confirmation code.");
                 return;
             }
 
             let isTopup = selectedLevelForPayment.id === 'topup';
             let requestName = isTopup ? 'General Deposit Top-Up' : `Level ${selectedLevelForPayment.id} (${selectedLevelForPayment.name})`;
-            
+            let actFee = isTopup ? 0 : selectedLevelForPayment.activationFee;
+            let depFee = isTopup ? 1000 : selectedLevelForPayment.depositFee;
+
             activationRequests.push({
                 user: currentUser,
                 level: requestName,
-                activationFee: isTopup ? 0 : selectedLevelForPayment.activationFee,
-                depositFee: isTopup ? 1000 : selectedLevelForPayment.depositFee,
+                activationFee: actFee,
+                depositFee: depFee,
                 code: code,
                 status: "Pending"
             });
 
-            alert("Request submitted to support successfully!");
+            alert("Activation & Payment request submitted to Customer Support successfully! Awaiting verification.");
             closeModal('payment-modal');
             document.getElementById('mpesa-code-input').value = "";
         }
 
         function submitComplaint() {
             let txt = document.getElementById('complaint-text').value.trim();
-            if(!txt) return;
-            complaintsList.push({ user: currentUser, message: txt, status: "Pending" });
-            alert("Support ticket sent successfully.");
+            if(!txt) {
+                alert("Please type your complaint.");
+                return;
+            }
+
+            complaintsList.push({
+                user: currentUser,
+                message: txt,
+                status: "Pending"
+            });
+
+            alert("Support ticket sent to Customer Support successfully.");
             closeModal('complaint-modal');
             document.getElementById('complaint-text').value = "";
         }
@@ -582,23 +604,41 @@
             let input = document.getElementById('ai-input');
             let q = input.value.trim();
             if(!q) return;
+
             let chatBox = document.getElementById('ai-chat-messages');
             chatBox.innerHTML += `<div class="ai-msg user">${q}</div>`;
             input.value = "";
+
             setTimeout(() => {
-                chatBox.innerHTML += `<div class="ai-msg bot">To unlock levels, pay via Lipa na M-Pesa (Paybill 522533, Account 8012296) and submit your M-Pesa code!</div>`;
+                let reply = "I can help with that! To unlock levels, send the exact total via Lipa na M-Pesa (Paybill 522533, Account 8012296) and submit your M-Pesa code. Customer support will retain the activation fee and credit your deposit fee straight to your dashboard balance for withdrawal!";
+                let lower = q.toLowerCase();
+                if(lower.includes('withdraw')) {
+                    reply = "You can withdraw your earnings and deposit funds anytime by clicking the 'Withdraw Funds' button on your dashboard.";
+                } else if(lower.includes('countdown') || lower.includes('tap')) {
+                    reply = "Each level gives you 6 daily taps. Once completed, a 12-hour countdown starts before you can tap again.";
+                } else if(lower.includes('level 1')) {
+                    reply = "Level 1 (Iron Box) is 100% FREE! You get 6 daily taps worth 30 Ksh total right after registering.";
+                }
+                chatBox.innerHTML += `<div class="ai-msg bot">${reply}</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
             }, 500);
         }
 
+        function copyInviteLink() {
+            navigator.clipboard.writeText(`https://greenara.co.ke/register?ref=${currentUser}`);
+            alert("Referral link copied! Each successful invite automatically grants a +3% bonus boost to your daily earnings.");
+        }
+
+        // Customer Support & Admin Portal Flow
         function openAdminPortal() {
-            let username = prompt("Enter Support ID:");
-            let pass = prompt("Enter Password:");
+            let username = prompt("Enter Customer Support ID:");
+            let pass = prompt("Enter Support Password:");
+
             if(username === "3879" && pass === "Scott@254") {
                 refreshAdminDashboard();
                 document.getElementById('admin-modal').style.display = 'flex';
             } else if(username !== null) {
-                alert("Invalid Credentials.");
+                alert("Invalid Support Credentials.");
             }
         }
 
@@ -608,60 +648,96 @@
             document.getElementById('user-count').innerText = allRegisteredUsers.length;
             document.getElementById('comp-count').innerText = complaintsList.filter(c => c.status === "Pending").length;
 
+            // Render Requests Table
             let reqTbody = document.getElementById('admin-requests-tbody');
-            reqTbody.innerHTML = activationRequests.length === 0 ? `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">No requests</td></tr>` : '';
-            activationRequests.forEach((req, idx) => {
-                reqTbody.innerHTML += `
-                    <tr>
-                        <td>${req.user}</td>
-                        <td>${req.level}</td>
-                        <td>${req.activationFee} Ksh</td>
-                        <td>${req.depositFee} Ksh</td>
-                        <td><code>${req.code}</code></td>
-                        <td>${req.status === 'Pending' ? `<button class="btn btn-green" style="padding: 3px 8px; font-size: 0.75rem;" onclick="approveRequest(${idx})">Approve</button>` : 'Approved'}</td>
-                    </tr>
-                `;
-            });
+            if(activationRequests.length === 0) {
+                reqTbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">No requests yet</td></tr>`;
+            } else {
+                reqTbody.innerHTML = "";
+                activationRequests.forEach((req, idx) => {
+                    reqTbody.innerHTML += `
+                        <tr>
+                            <td>${req.user}</td>
+                            <td>${req.level}</td>
+                            <td>${req.activationFee.toLocaleString()} Ksh (System)</td>
+                            <td>${req.depositFee.toLocaleString()} Ksh (User Bal)</td>
+                            <td><code>${req.code}</code></td>
+                            <td>${req.status === 'Pending' ? `<button class="btn btn-green" style="padding: 4px 10px; font-size: 0.75rem;" onclick="approveRequest(${idx})">Approve & Credit Deposit</button>` : '<span style="color:var(--neon-green)">Approved</span>'}</td>
+                        </tr>
+                    `;
+                });
+            }
 
+            // Render Withdrawals Table
             let withdrawTbody = document.getElementById('admin-withdrawals-tbody');
-            withdrawTbody.innerHTML = withdrawalRequests.length === 0 ? `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No withdrawals</td></tr>` : '';
-            withdrawalRequests.forEach((w, idx) => {
-                withdrawTbody.innerHTML += `
-                    <tr>
-                        <td>${w.user}</td>
-                        <td>${w.amount} Ksh</td>
-                        <td>${w.status}</td>
-                        <td>${w.status === 'Pending' ? `<button class="btn btn-gold" style="padding: 3px 8px; font-size: 0.75rem;" onclick="processPayout(${idx})">Payout</button>` : 'Done'}</td>
-                    </tr>
-                `;
-            });
+            if(withdrawalRequests.length === 0) {
+                withdrawTbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No pending withdrawals</td></tr>`;
+            } else {
+                withdrawTbody.innerHTML = "";
+                withdrawalRequests.forEach((w, idx) => {
+                    withdrawTbody.innerHTML += `
+                        <tr>
+                            <td>${w.user}</td>
+                            <td>${w.amount.toLocaleString()} Ksh</td>
+                            <td><span style="color: ${w.status === 'Success' ? 'var(--neon-green)' : 'var(--gold)'}">${w.status}</span></td>
+                            <td>${w.status === 'Pending' ? `<button class="btn btn-gold" style="padding: 4px 10px; font-size: 0.75rem;" onclick="processPayout(${idx})">Payout Successfully</button>` : 'Completed'}</td>
+                        </tr>
+                    `;
+                });
+            }
 
+            // Render Users Table
             let usersTbody = document.getElementById('admin-users-tbody');
             usersTbody.innerHTML = "";
             allRegisteredUsers.forEach(usr => {
-                usersTbody.innerHTML += `<tr><td>${usr.username}</td><td>${usr.levelsUnlocked.join(', ')}</td><td>${usr.balance} Ksh</td><td style="color:var(--neon-green);">${usr.status}</td></tr>`;
+                usersTbody.innerHTML += `
+                    <tr>
+                        <td>${usr.username}</td>
+                        <td>Level(s): ${usr.levelsUnlocked.join(', ')}</td>
+                        <td>${usr.balance.toLocaleString()} Ksh</td>
+                        <td style="color: var(--neon-green);">${usr.status}</td>
+                    </tr>
+                `;
             });
 
+            // Render Complaints Table
             let compTbody = document.getElementById('admin-complaints-tbody');
-            compTbody.innerHTML = complaintsList.length === 0 ? `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">No complaints</td></tr>` : '';
-            complaintsList.forEach((comp, idx) => {
-                compTbody.innerHTML += `<tr><td>${comp.user}</td><td>${comp.message}</td><td><button class="btn btn-outline" style="padding: 2px 6px; font-size: 0.7rem;" onclick="resolveComplaint(${idx})">Resolve</button></td></tr>`;
-            });
+            if(complaintsList.length === 0) {
+                compTbody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">No active complaints</td></tr>`;
+            } else {
+                compTbody.innerHTML = "";
+                complaintsList.forEach((comp, idx) => {
+                    compTbody.innerHTML += `
+                        <tr>
+                            <td>${comp.user}</td>
+                            <td>${comp.message}</td>
+                            <td><button class="btn btn-outline" style="padding: 3px 8px; font-size: 0.75rem;" onclick="resolveComplaint(${idx})">Resolve</button></td>
+                        </tr>
+                    `;
+                });
+            }
         }
 
         function approveRequest(index) {
             let req = activationRequests[index];
             req.status = "Approved";
+
             let targetUser = allRegisteredUsers.find(x => x.username === req.user);
             if(targetUser) {
                 targetUser.balance += req.depositFee;
-                let match = req.level.match(/Level (\d+)/);
-                if(match) {
-                    let lvlId = parseInt(match[1]);
-                    if(!targetUser.levelsUnlocked.includes(lvlId)) targetUser.levelsUnlocked.push(lvlId);
+
+                if(req.level.includes("Level")) {
+                    let match = req.level.match(/Level (\d+)/);
+                    if(match) {
+                        let lvlId = parseInt(match[1]);
+                        if(!targetUser.levelsUnlocked.includes(lvlId)) {
+                            targetUser.levelsUnlocked.push(lvlId);
+                        }
+                    }
                 }
             }
-            alert("Approved successfully!");
+
+            alert(`Request approved! Activation fee retained by system; ${req.depositFee} Ksh credited to ${req.user}'s dashboard balance.`);
             refreshAdminDashboard();
             if(currentUser === req.user) {
                 userBalance = targetUser.balance;
@@ -671,20 +747,22 @@
         }
 
         function processPayout(index) {
-            withdrawalRequests[index].status = "Success";
-            alert("Payout marked successful!");
+            let w = withdrawalRequests[index];
+            w.status = "Success";
+            alert(`Payout of ${w.amount.toLocaleString()} Ksh to ${w.user} marked as Successful!`);
             refreshAdminDashboard();
         }
 
         function resolveComplaint(index) {
             complaintsList.splice(index, 1);
-            alert("Complaint resolved.");
+            alert("Complaint marked resolved and cleared.");
             refreshAdminDashboard();
         }
 
         function switchAdminTab(tabName, btnElem) {
             document.querySelectorAll('.admin-section').forEach(sec => sec.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
             document.getElementById(`admin-tab-${tabName}`).classList.remove('hidden');
             btnElem.classList.add('active');
         }
