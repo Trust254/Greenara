@@ -25,7 +25,7 @@
         .justify-between { justify-content: space-between; }
         .gap-2 { gap: 8px; }
 
-        /* Auth Screen / Phone Frame Container matching reference UI */
+        /* Main Container matching exact design */
         .app-frame { background: var(--card-bg); border: 2px solid var(--neon-green); width: 100%; max-width: 440px; padding: 30px 20px; border-radius: 20px; box-shadow: 0 0 35px rgba(0,255,136,0.15); min-height: 620px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
 
         .auth-logo-box { width: 60px; height: 60px; background: linear-gradient(135deg, #00ff88, #113322); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 0 15px rgba(0,255,136,0.3); font-size: 1.8rem; }
@@ -37,7 +37,7 @@
         .form-control { width: 100%; padding: 12px; background: #050a08; border: 1px solid var(--card-border); border-radius: 8px; color: white; font-size: 0.95rem; }
         .form-control:focus { outline: none; border-color: var(--neon-green); box-shadow: 0 0 8px var(--accent-glow); }
 
-        /* Dashboard View matching exact image style */
+        /* Dashboard View */
         .dash-header { text-align: center; margin-bottom: 20px; }
         .dash-logo { font-size: 2.2rem; margin-bottom: 5px; }
         .dash-brand-name { font-size: 1.6rem; font-weight: 800; color: var(--neon-green); letter-spacing: 0.5px; }
@@ -54,9 +54,9 @@
         .menu-btn.logout { border-color: #ff4d4d; color: #ff4d4d; justify-content: center; margin-top: 10px; }
         .menu-btn.logout:hover { background: rgba(255, 77, 77, 0.1); }
 
-        /* Modals & Sub-views */
+        /* Modals */
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: var(--card-bg); border: 1px solid var(--card-border); width: 100%; max-width: 500px; border-radius: 16px; padding: 25px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+        .modal-content { background: var(--card-bg); border: 1px solid var(--card-border); width: 100%; max-width: 480px; border-radius: 16px; padding: 25px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .modal-header h2 { font-size: 1.2rem; color: var(--neon-green); font-weight: 800; }
         .close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
@@ -66,19 +66,17 @@
         .btn-green:hover { background: #00cc6a; }
         .btn-gold { background: var(--gold); color: var(--bg-dark); }
 
-        /* Levels Grid inside view */
-        .levels-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 15px; }
-        .level-card { background: #050a08; border: 1px solid var(--card-border); border-radius: 10px; padding: 15px; display: flex; gap: 12px; align-items: center; }
+        .levels-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 10px; }
+        .level-card { background: #050a08; border: 1px solid var(--card-border); border-radius: 10px; padding: 12px; display: flex; gap: 12px; align-items: center; }
         .level-card.unlocked { border-color: var(--neon-green); }
-        .level-img { width: 70px; height: 70px; border-radius: 8px; object-fit: cover; }
+        .level-img { width: 65px; height: 65px; border-radius: 8px; object-fit: cover; }
         .level-info { flex: 1; }
-        .level-title { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 3px; }
-        .level-sub { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; }
+        .level-title { font-size: 0.95rem; font-weight: 700; color: white; margin-bottom: 2px; }
+        .level-sub { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; }
 
         .mpesa-box { background: #050a08; border: 1px solid var(--gold); border-radius: 10px; padding: 12px; text-align: center; margin: 12px 0; font-size: 0.85rem; }
         .mpesa-badge { background: #4CAF50; color: white; padding: 2px 8px; font-size: 0.7rem; font-weight: 900; border-radius: 4px; display: inline-block; margin-bottom: 6px; }
 
-        /* Admin Portal & Customer Support styles */
         .admin-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.8rem; }
         .admin-table th, .admin-table td { border: 1px solid var(--card-border); padding: 8px; text-align: left; }
         .admin-table th { background: #0c1811; color: var(--gold); }
@@ -86,14 +84,14 @@
         .tab-btn { background: none; border: none; color: var(--text-muted); padding: 5px 10px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 0.78rem; }
         .tab-btn.active { background: var(--neon-green); color: var(--bg-dark); }
         
-        .floating-support { position: fixed; bottom: 20px; right: 20px; background: var(--neon-green); color: var(--bg-dark); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; box-shadow: 0 4px 15px rgba(0,255,136,0.4); cursor: pointer; z-index: 100; }
+        .floating-support { position: fixed; bottom: 20px; right: 20px; background: var(--neon-green); color: var(--bg-dark); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 4px 15px rgba(0,255,136,0.4); cursor: pointer; z-index: 100; }
     </style>
 </head>
 <body>
 
     <div class="app-frame">
         
-        <!-- SECTION 1: AUTHENTICATION SCREEN -->
+        <!-- AUTHENTICATION SCREEN -->
         <div id="auth-view">
             <div class="auth-logo-box">⚡</div>
             <div class="auth-title">Greenara</div>
@@ -111,10 +109,10 @@
             </div>
 
             <button class="btn btn-green" style="margin-top: 10px;" onclick="handleAuth()">Register & Start Earning</button>
-            <p style="text-align: center; font-size: 0.72rem; color: var(--text-muted); margin-top: 15px;">By registering, you agree to Greenara daily reward terms and 3% referral boosts.</p>
+            <p style="text-align: center; font-size: 0.72rem; color: var(--text-muted); margin-top: 15px;">By registering, you agree to Greenara daily reward terms.</p>
         </div>
 
-        <!-- SECTION 2: ORIGINAL DASHBOARD SCREEN (Matches your exact reference image) -->
+        <!-- MAIN DASHBOARD SCREEN (Matches your screenshot) -->
         <div id="dashboard-view" class="hidden flex-col" style="flex: 1; justify-content: space-between;">
             <div>
                 <div class="dash-header">
@@ -158,14 +156,12 @@
                 <h2>Earning Asset Levels</h2>
                 <button class="close-btn" onclick="closeModal('levels-modal')">&times;</button>
             </div>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Level 1 is 100% Free! Complete 6 daily taps to earn.</p>
-            <div class="levels-grid" id="levels-container">
-                <!-- Rendered dynamically -->
-            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">Level 1 is 100% Free! Complete 6 daily taps to earn.</p>
+            <div class="levels-grid" id="levels-container"></div>
         </div>
     </div>
 
-    <!-- Deposit / Unlock Payment Modal -->
+    <!-- Payment / Deposit Modal -->
     <div id="payment-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -203,13 +199,13 @@
 
     <!-- Customer Support / Admin Portal Modal -->
     <div id="admin-modal" class="modal">
-        <div class="modal-content" style="max-width: 600px;">
+        <div class="modal-content" style="max-width: 550px;">
             <div class="modal-header">
                 <h2>Customer Support Center</h2>
                 <button class="close-btn" onclick="closeModal('admin-modal')">&times;</button>
             </div>
             <div class="tab-nav">
-                <button class="tab-btn active" onclick="switchAdminTab('req', this)">Activations/Deposits (<span id="req-count">0</span>)</button>
+                <button class="tab-btn active" onclick="switchAdminTab('req', this)">Activations (<span id="req-count">0</span>)</button>
                 <button class="tab-btn" onclick="switchAdminTab('wit', this)">Withdrawals (<span id="wit-count">0</span>)</button>
                 <button class="tab-btn" onclick="switchAdminTab('com', this)">Tickets (<span id="com-count">0</span>)</button>
             </div>
@@ -234,7 +230,7 @@
         </div>
     </div>
 
-    <!-- Floating Customer Support Access Button -->
+    <!-- Floating Support Access Button -->
     <div class="floating-support" onclick="openAdminPortal()" title="Customer Support Login">
         💬
     </div>
@@ -255,7 +251,6 @@
         let withdrawalRequests = [];
         let complaintsList = [];
 
-        // Authentication Handler with standard validation rules
         function handleAuth() {
             let u = document.getElementById('auth-username').value.trim();
             let p = document.getElementById('auth-password').value.trim();
@@ -286,7 +281,6 @@
             document.getElementById('user-balance-display').innerText = userBalance.toFixed(2);
             document.getElementById('auth-view').classList.add('hidden');
             document.getElementById('dashboard-view').classList.remove('hidden');
-            setInterval(updateTimers, 1000);
         }
 
         function handleLogout() {
@@ -326,27 +320,16 @@
                             <div class="level-title">Level ${lvl.id}: ${lvl.name}</div>
                             <div class="level-sub">${lvl.id === 1 ? 'Free level' : `Cost: ${totalCost.toLocaleString()} Ksh`}</div>
                             ${isUnlocked ? `
-                                <div style="font-size:0.78rem; color:var(--neon-green); font-weight:600; margin-bottom:6px;">
+                                <div style="font-size:0.75rem; color:var(--neon-green); font-weight:600; margin-bottom:4px;">
                                     ${inCooldown ? `⏳ ${timeStr}` : `Taps Left: ${lvl.tapsLeft}/6`}
                                 </div>
-                                <button class="btn btn-green" style="padding:6px 12px; font-size:0.8rem;" ${inCooldown ? 'disabled' : ''} onclick="tapLevel(${lvl.id})">Tap (+${lvl.perTap} Ksh)</button>
+                                <button class="btn btn-green" style="padding:5px 10px; font-size:0.75rem;" ${inCooldown ? 'disabled' : ''} onclick="tapLevel(${lvl.id})">Tap (+${lvl.perTap} Ksh)</button>
                             ` : `
-                                <button class="btn btn-gold" style="padding:6px 12px; font-size:0.8rem;" onclick="openUnlockPayment(${lvl.id})">Unlock Level</button>
+                                <button class="btn btn-gold" style="padding:5px 10px; font-size:0.75rem;" onclick="openUnlockPayment(${lvl.id})">Unlock Level</button>
                             `}
                         </div>
                     </div>
                 `;
-            });
-        }
-
-        function updateTimers() {
-            let now = Date.now();
-            levelsData.forEach(lvl => {
-                if (lvl.cooldownEnd > 0 && lvl.cooldownEnd <= now) {
-                    lvl.cooldownEnd = 0;
-                    lvl.tapsLeft = 6;
-                    if(document.getElementById('levels-modal').style.display === 'flex') renderLevelsList();
-                }
             });
         }
 
@@ -426,7 +409,7 @@
                 status: "Pending"
             });
 
-            alert("Request submitted to support!");
+            alert("Request submitted to support successfully!");
             closeModal('payment-modal');
             document.getElementById('mpesa-code-input').value = "";
         }
