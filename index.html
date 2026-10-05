@@ -435,7 +435,7 @@
             let data = await res.json();
 
             document.getElementById('req-count').innerText = data.activationRequests.filter(r => r.status === "Pending").length;
-            document.getElementById('withdraw-count').innerText = data.withdrawalRequests.filter(w => w.status === "Pending").length;
+            document.getElementById('withdraw-count').innerText = data.withdrawalRequests.log || data.withdrawalRequests.filter(w => w.status === "Pending").length;
             document.getElementById('user-count').innerText = data.users.length;
             document.getElementById('comp-count').innerText = data.complaints.length;
 
