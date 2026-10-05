@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greenara - Digital Asset Platform</title>
+    <title>Greenara - Kenya's Digital Asset Tap & Earn Platform</title>
     <style>
         :root {
             --bg-color: #0b0f0e;
@@ -21,7 +21,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
-            padding: 0;
+            padding: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,48 +34,47 @@
             background: var(--card-bg);
             border: 2px solid var(--primary);
             border-radius: 16px;
-            padding: 24px;
+            padding: 20px;
             box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
             box-sizing: border-box;
-            margin: 16px;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .header h1 {
             color: var(--primary);
-            margin: 8px 0;
-            font-size: 24px;
+            margin: 5px 0;
+            font-size: 22px;
         }
 
         .header p {
             color: var(--text-muted);
-            font-size: 14px;
+            font-size: 13px;
             margin: 0;
         }
 
         .logo-icon {
-            font-size: 36px;
+            font-size: 32px;
         }
 
         .error-banner {
             background-color: rgba(255, 77, 77, 0.15);
             border: 1px solid var(--danger);
             color: var(--danger);
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 12px;
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: none;
         }
 
         .tabs {
             display: flex;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             background: #0b0f0e;
             border-radius: 8px;
             padding: 4px;
@@ -86,7 +85,7 @@
             background: none;
             border: none;
             color: var(--text-muted);
-            padding: 10px;
+            padding: 8px;
             font-weight: bold;
             cursor: pointer;
             border-radius: 6px;
@@ -99,100 +98,133 @@
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         label {
             display: block;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
-        input {
+        input, select {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             background: #0b0f0e;
             border: 1px solid #2a3b35;
             border-radius: 8px;
             color: var(--text-main);
-            font-size: 14px;
+            font-size: 13px;
             box-sizing: border-box;
         }
 
-        input:focus {
+        input:focus, select:focus {
             outline: none;
             border-color: var(--primary);
         }
 
         .btn-primary {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             background: var(--primary);
             color: #000000;
             border: none;
             border-radius: 8px;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 14px;
             cursor: pointer;
-            transition: background 0.3s;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .btn-primary:hover {
             background: var(--primary-hover);
         }
 
-        .dashboard-view, .auth-view {
+        .view {
             display: none;
         }
 
-        .dashboard-view.active, .auth-view.active {
+        .view.active {
             display: block;
         }
 
         .balance-card {
             background: #0b0f0e;
             border: 1px solid var(--accent-gold);
-            padding: 15px;
+            padding: 12px;
             border-radius: 10px;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .balance-card h3 {
             margin: 0;
             color: var(--accent-gold);
-            font-size: 22px;
+            font-size: 20px;
         }
 
         .menu-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .menu-btn {
-            padding: 12px;
+            padding: 10px 12px;
             background: #1b2622;
             border: 1px solid #2a3b35;
             color: var(--text-main);
             border-radius: 8px;
             text-align: left;
             cursor: pointer;
+            font-size: 13px;
             font-weight: 500;
-            transition: border-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .menu-btn:hover {
             border-color: var(--primary);
         }
 
+        .back-link {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 13px;
+            padding: 0;
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+
+        .tap-circle {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, var(--primary) 0%, #008833 100%);
+            border-radius: 50%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+            user-select: none;
+            transition: transform 0.1s;
+        }
+
+        .tap-circle:active {
+            transform: scale(0.92);
+        }
+
         .logout-btn {
-            background: transparent;
-            border: 1px solid var(--danger);
+            border-color: var(--danger);
             color: var(--danger);
-            margin-top: 20px;
+            margin-top: 15px;
+            justify-content: center;
         }
     </style>
 </head>
@@ -206,20 +238,19 @@
             <p>Kenya's Digital Asset Tap & Earn Platform</p>
         </div>
 
-        <!-- Connection Error Banner -->
         <div id="errorBanner" class="error-banner">
             Connection error. Make sure backend is running on Render.
         </div>
 
-        <!-- Auth View (Login / Register) -->
-        <div id="authView" class="auth-view active">
+        <!-- 1. AUTH VIEW -->
+        <div id="authView" class="view active">
             <div class="tabs">
                 <button id="loginTabBtn" class="tab-btn active" onclick="switchTab('login')">Login</button>
                 <button id="registerTabBtn" class="tab-btn" onclick="switchTab('register')">Register</button>
             </div>
 
             <div class="form-group">
-                <label id="usernameLabel">Mobile Number / Username</label>
+                <label>Mobile Number / Username</label>
                 <input type="text" id="userInput" placeholder="e.g. 0712345678">
             </div>
 
@@ -228,49 +259,109 @@
                 <input type="password" id="passInput" placeholder="••••••••">
             </div>
 
-            <button id="authSubmitBtn" class="btn-primary" onclick="handleAuth()">Register & Start Earning</button>
+            <button id="authSubmitBtn" class="btn-primary" onclick="handleAuth()">Login</button>
         </div>
 
-        <!-- Dashboard View -->
-        <div id="dashboardView" class="dashboard-view">
+        <!-- 2. MAIN DASHBOARD VIEW -->
+        <div id="dashboardView" class="view">
             <div class="balance-card">
-                <p style="margin:0 0 5px 0; font-size:12px; color:var(--text-muted);">Available Balance</p>
-                <h3 id="userBalance">0.00 Ksh</h3>
+                <p style="margin:0 0 3px 0; font-size:11px; color:var(--text-muted);">Available Balance</p>
+                <h3 id="userBalance">30.00 Ksh</h3>
             </div>
 
             <div class="menu-grid">
-                <button class="menu-btn" onclick="alert('Tap mining levels active!')">⚡ Earning Asset Levels</button>
-                <button class="menu-btn" onclick="alert('Activation request screen')">📥 Deposit / Top Up</button>
-                <button class="menu-btn" onclick="alert('Withdrawal request screen')">💸 Withdraw Funds</button>
-                <button class="menu-btn" onclick="alert('Support ticket screen')">💬 Send Complaint / Ticket</button>
+                <button class="menu-btn" onclick="switchView('levelsView')">⚡ Earning Asset Levels & Mining</button>
+                <button class="menu-btn" onclick="switchView('depositView')">📥 Deposit / Top Up</button>
+                <button class="menu-btn" onclick="switchView('withdrawView')">💸 Withdraw Funds</button>
+                <button class="menu-btn" onclick="switchView('complaintView')">💬 Send Complaint / Ticket</button>
             </div>
 
             <button class="menu-btn logout-btn" onclick="handleLogout()">🚪 Logout</button>
         </div>
+
+        <!-- 3. EARNING LEVELS & MINING VIEW -->
+        <div id="levelsView" class="view">
+            <button class="back-link" onclick="switchView('dashboardView')">← Back to Dashboard</button>
+            <h3 style="color:var(--primary); font-size:16px; margin-top:0;">Asset Levels & Tapping</h3>
+            
+            <div class="form-group">
+                <label>Select Unlocked Level</label>
+                <select id="activeLevelSelect">
+                    <option value="1">Level 1: Iron Box (Free - 5 Ksh/tap)</option>
+                </select>
+            </div>
+
+            <div style="text-align: center; background: #0b0f0e; padding: 15px; border-radius: 10px; border: 1px solid #2a3b35;">
+                <p style="margin:0; font-size:12px; color:var(--text-muted);">Daily Taps Left: <span id="tapsLeft" style="color:var(--primary); font-weight:bold;">6</span> / 6</p>
+                <div class="tap-circle" onclick="performTap()">⚡</div>
+                <p style="margin:0; font-size:11px; color:var(--accent-gold);" id="miningStatus">Tap above to collect earnings!</p>
+            </div>
+        </div>
+
+        <!-- 4. DEPOSIT / TOP UP VIEW -->
+        <div id="depositView" class="view">
+            <button class="back-link" onclick="switchView('dashboardView')">← Back to Dashboard</button>
+            <h3 style="color:var(--primary); font-size:16px; margin-top:0;">Deposit via M-Pesa</h3>
+            <p style="font-size:12px; color:var(--text-muted);">Paybill: <strong>522533</strong><br>Account: <strong>8012296</strong></p>
+            
+            <div class="form-group">
+                <label>Target Level to Unlock / Deposit</label>
+                <select id="depositLevel">
+                    <option value="Level 2 (Smart Phone) - 300 Ksh">Level 2 (Smart Phone) - 300 Ksh</option>
+                    <option value="Level 3 (Laptop) - 750 Ksh">Level 3 (Laptop) - 750 Ksh</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>M-Pesa Transaction Code</label>
+                <input type="text" id="mpesaCode" placeholder="e.g. QHX7291XYZ">
+            </div>
+            <button class="btn-primary" onclick="submitDeposit()">Submit Activation Request</button>
+        </div>
+
+        <!-- 5. WITHDRAW VIEW -->
+        <div id="withdrawView" class="view">
+            <button class="back-link" onclick="switchView('dashboardView')">← Back to Dashboard</button>
+            <h3 style="color:var(--primary); font-size:16px; margin-top:0;">Withdraw Earnings</h3>
+            <div class="form-group">
+                <label>Amount (Ksh)</label>
+                <input type="number" id="withdrawAmount" placeholder="Min 150 Ksh">
+            </div>
+            <div class="form-group">
+                <label>M-Pesa Mobile Number</label>
+                <input type="text" id="withdrawPhone" placeholder="0712345678">
+            </div>
+            <button class="btn-primary" onclick="submitWithdrawal()">Request Payout</button>
+        </div>
+
+        <!-- 6. COMPLAINT VIEW -->
+        <div id="complaintView" class="view">
+            <button class="back-link" onclick="switchView('dashboardView')">← Back to Dashboard</button>
+            <h3 style="color:var(--primary); font-size:16px; margin-top:0;">Customer Support Ticket</h3>
+            <div class="form-group">
+                <label>Describe Your Issue</label>
+                <input type="text" id="complaintText" placeholder="e.g. Deposit not credited yet">
+            </div>
+            <button class="btn-primary" onclick="submitComplaint()">Send Ticket</button>
+        </div>
     </div>
 
     <script>
-        // POINTED TO YOUR NEW RENDER BACKEND
         const BACKEND_URL = "https://greenara-backend-1.onrender.com";
 
-        let currentMode = 'login'; // 'login' or 'register'
+        let currentMode = 'login';
         let currentUser = null;
+        let dailyTaps = 6;
 
         function switchTab(mode) {
             currentMode = mode;
-            const loginBtn = document.getElementById('loginTabBtn');
-            const registerBtn = document.getElementById('registerTabBtn');
-            const submitBtn = document.getElementById('authSubmitBtn');
+            document.getElementById('loginTabBtn').classList.toggle('active', mode === 'login');
+            document.getElementById('registerTabBtn').classList.toggle('active', mode === 'register');
+            document.getElementById('authSubmitBtn').innerText = mode === 'login' ? 'Login' : 'Register & Start Earning';
+        }
 
-            if (mode === 'login') {
-                loginBtn.classList.add('active');
-                registerBtn.classList.remove('active');
-                submitBtn.innerText = 'Login to Account';
-            } else {
-                registerBtn.classList.add('active');
-                loginBtn.classList.remove('active');
-                submitBtn.innerText = 'Register & Start Earning';
-            }
+        function switchView(viewId) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById(viewId).classList.add('active');
         }
 
         async function handleAuth() {
@@ -297,7 +388,8 @@
 
                 if (data.success) {
                     currentUser = data.user;
-                    showDashboard();
+                    updateUIState();
+                    switchView('dashboardView');
                 } else {
                     alert(data.message || 'Authentication failed.');
                 }
@@ -307,19 +399,83 @@
             }
         }
 
-        function showDashboard() {
-            document.getElementById('authView').classList.remove('active');
-            document.getElementById('dashboardView').classList.add('active');
+        function updateUIState() {
+            if (!currentUser) return;
             document.getElementById('userBalance').innerText = `${currentUser.balance.toFixed(2)} Ksh`;
+            
+            let select = document.getElementById('activeLevelSelect');
+            select.innerHTML = '';
+            if (currentUser.levelsUnlocked.includes(1)) {
+                select.innerHTML += `<option value="1">Level 1: Iron Box (5 Ksh/tap)</option>`;
+            }
+            if (currentUser.levelsUnlocked.includes(2)) {
+                select.innerHTML += `<option value="2">Level 2: Smart Phone (15 Ksh/tap)</option>`;
+            }
+        }
+
+        function performTap() {
+            if (dailyTaps <= 0) {
+                alert('Daily taps exhausted! Come back tomorrow.');
+                return;
+            }
+            dailyTaps--;
+            currentUser.balance += 5;
+            document.getElementById('tapsLeft').innerText = dailyTaps;
+            document.getElementById('userBalance').innerText = `${currentUser.balance.toFixed(2)} Ksh`;
+            document.getElementById('miningStatus').innerText = 'Earned +5 Ksh successfully!';
+        }
+
+        async function submitDeposit() {
+            const level = document.getElementById('depositLevel').value;
+            const code = document.getElementById('mpesaCode').value.trim();
+            if (!code) { alert('Please enter M-Pesa code'); return; }
+
+            await fetch(`${BACKEND_URL}/api/activation`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user: currentUser.username, level, code, depositFee: 300, status: 'Pending' })
+            });
+            alert('Activation request submitted successfully!');
+            switchView('dashboardView');
+        }
+
+        async function submitWithdrawal() {
+            const amount = parseFloat(document.getElementById('withdrawAmount').value);
+            const phone = document.getElementById('withdrawPhone').value.trim();
+            if (!amount || amount < 150) { alert('Minimum withdrawal is 150 Ksh'); return; }
+
+            const res = await fetch(`${BACKEND_URL}/api/withdrawal`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user: currentUser.username, amount, phone, status: 'Pending' })
+            });
+            const data = await res.json();
+            if (data.success) {
+                currentUser.balance = data.balance;
+                updateUIState();
+                alert('Withdrawal request submitted!');
+                switchView('dashboardView');
+            }
+        }
+
+        async function submitComplaint() {
+            const message = document.getElementById('complaintText').value.trim();
+            if (!message) return;
+            await fetch(`${BACKEND_URL}/api/complaint`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user: currentUser.username, message })
+            });
+            alert('Ticket sent to support.');
+            switchView('dashboardView');
         }
 
         function handleLogout() {
             currentUser = null;
-            document.getElementById('dashboardView').classList.remove('active');
-            document.getElementById('authView').classList.add('active');
+            dailyTaps = 6;
+            switchView('authView');
         }
 
-        // Quick Ping to verify backend connection on load
         window.addEventListener('DOMContentLoaded', async () => {
             try {
                 await fetch(`${BACKEND_URL}/`);
