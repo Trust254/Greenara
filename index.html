@@ -3,491 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="bvAT-SpWX7RGs1cOlm-_6L4RhZ-kZFu9LZdKAZIhDJQ" />
-    <title>Greenara | Kenya's Premier Daily Earning & Asset Tap Platform</title>
+    <title>Greenara - Digital Asset Platform</title>
     <style>
         :root {
-            --bg-dark: #070d0a;
-            --card-bg: #101d16;
-            --card-border: #1b3325;
-            --neon-green: #00ff88;
-            --gold: #f3c614;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
+            --bg-color: #0b0f0e;
+            --card-bg: #131a18;
+            --primary: #00ff66;
+            --primary-hover: #00cc52;
+            --accent-gold: #ffaa00;
+            --text-main: #ffffff;
+            --text-muted: #a0aec0;
+            --danger: #ff4d4d;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
-        .hidden { display: none !important; }
-        .flex { display: flex; }
-        .flex-col { flex-direction: column; }
-        .items-center { align-items: center; }
-        .justify-between { justify-content: space-between; }
-        .gap-2 { gap: 8px; }
-        
-        #auth-container { position: fixed; inset: 0; background: var(--bg-dark); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        .auth-card { background: var(--card-bg); border: 2px solid var(--neon-green); width: 100%; max-width: 420px; padding: 30px; border-radius: 16px; box-shadow: 0 0 30px rgba(0,255,136,0.1); }
-        .auth-logo-box { width: 70px; height: 70px; background: linear-gradient(135deg, #00ff88, #113322); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 2rem; }
-        .header-logo-box { width: 42px; height: 42px; background: linear-gradient(135deg, #00ff88, #113322); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
-        .auth-title { text-align: center; font-size: 1.6rem; color: var(--neon-green); margin-bottom: 5px; font-weight: 800; }
-        .auth-sub { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px; }
-        .form-control { width: 100%; padding: 12px; background: #050a08; border: 1px solid var(--card-border); border-radius: 8px; color: white; font-size: 0.95rem; }
-        .form-control:focus { outline: none; border-color: var(--neon-green); }
-        
-        .auth-tabs { display: flex; margin-bottom: 20px; background: #050a08; border-radius: 8px; padding: 4px; border: 1px solid var(--card-border); }
-        .auth-tab { flex: 1; padding: 10px; text-align: center; background: none; border: none; color: var(--text-muted); font-weight: 600; cursor: pointer; border-radius: 6px; }
-        .auth-tab.active { background: var(--neon-green); color: var(--bg-dark); }
 
-        header { background: linear-gradient(180deg, #0d1a13 0%, var(--bg-dark) 100%); border-bottom: 1px solid var(--card-border); padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; }
-        .brand-wrapper { display: flex; align-items: center; gap: 12px; }
-        .brand-info h1 { font-size: 1.25rem; font-weight: 800; color: var(--neon-green); }
-        .brand-info span { font-size: 0.75rem; color: var(--text-muted); }
-        .user-pill { background: var(--card-bg); border: 1px solid var(--card-border); padding: 8px 16px; border-radius: 20px; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; }
-        .user-pill span { color: var(--gold); font-weight: 700; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-        .main-container { max-width: 1200px; margin: 0 auto; width: 100%; padding: 25px; flex: 1; }
-        .banner { background: linear-gradient(135deg, #102219, #0d1a13); border: 1px solid #1f3b2d; border-left: 5px solid var(--gold); padding: 20px; border-radius: 12px; margin-bottom: 25px; }
-        .banner h3 { color: var(--gold); font-size: 1.05rem; margin-bottom: 8px; }
-        .banner p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
+            box-sizing: border-box;
+            margin: 16px;
+        }
 
-        .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 30px; }
-        .btn { padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; cursor: pointer; border: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
-        .btn-green { background: var(--neon-green); color: var(--bg-dark); }
-        .btn-green:hover { background: #00cc6a; }
-        .btn-gold { background: var(--gold); color: var(--bg-dark); }
-        .btn-outline { background: transparent; border: 1px solid var(--card-border); color: var(--text-main); }
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-        .section-heading { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .levels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
-        .level-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
-        .level-card.unlocked { border-color: var(--neon-green); }
-        .level-img-wrap { width: 100%; height: 180px; position: relative; background: #040806; }
-        .level-img-wrap img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
-        .status-badge { position: absolute; top: 12px; right: 12px; padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; }
-        .badge-free { background: rgba(0,255,136,0.9); color: var(--bg-dark); }
-        .badge-locked { background: rgba(243,198,20,0.9); color: var(--bg-dark); }
-        .badge-active { background: rgba(0,255,136,0.2); border: 1px solid var(--neon-green); color: var(--neon-green); }
+        .header h1 {
+            color: var(--primary);
+            margin: 8px 0;
+            font-size: 24px;
+        }
 
-        .level-body { padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
-        .level-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
-        .level-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.4; }
-        .stat-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 8px 0; border-top: 1px solid #162a1e; margin-bottom: 15px; }
-        .stat-row span:last-child { font-weight: 700; color: var(--neon-green); }
+        .header p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin: 0;
+        }
 
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: var(--card-bg); border: 1px solid var(--card-border); width: 100%; max-width: 540px; border-radius: 16px; padding: 30px; max-height: 90vh; overflow-y: auto; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .modal-header h2 { font-size: 1.3rem; color: var(--neon-green); font-weight: 800; }
-        .close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
-        .mpesa-instruction { background: #050a08; border: 1px solid var(--gold); border-radius: 10px; padding: 15px; text-align: center; margin: 15px 0; }
-        .mpesa-brand { background: #4CAF50; color: white; padding: 4px 10px; font-size: 0.75rem; font-weight: 900; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
+        .logo-icon {
+            font-size: 36px;
+        }
 
-        .admin-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; }
-        .admin-table th, .admin-table td { border: 1px solid var(--card-border); padding: 10px; text-align: left; }
-        .admin-table th { background: #0c1811; color: var(--gold); }
-        .tab-nav { display: flex; gap: 8px; margin-bottom: 15px; border-bottom: 1px solid var(--card-border); padding-bottom: 10px; flex-wrap: wrap; }
-        .tab-btn { background: none; border: none; color: var(--text-muted); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem; }
-        .tab-btn.active { background: var(--neon-green); color: var(--bg-dark); }
+        .error-banner {
+            background-color: rgba(255, 77, 77, 0.15);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            text-align: center;
+            margin-bottom: 15px;
+            display: none;
+        }
 
-        .floating-support { position: fixed; bottom: 25px; right: 25px; background: var(--neon-green); color: var(--bg-dark); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: 0 4px 20px rgba(0,255,136,0.4); cursor: pointer; z-index: 100; }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            background: #0b0f0e;
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: #000000;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            background: #0b0f0e;
+            border: 1px solid #2a3b35;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: #000000;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .dashboard-view, .auth-view {
+            display: none;
+        }
+
+        .dashboard-view.active, .auth-view.active {
+            display: block;
+        }
+
+        .balance-card {
+            background: #0b0f0e;
+            border: 1px solid var(--accent-gold);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .balance-card h3 {
+            margin: 0;
+            color: var(--accent-gold);
+            font-size: 22px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .menu-btn {
+            padding: 12px;
+            background: #1b2622;
+            border: 1px solid #2a3b35;
+            color: var(--text-main);
+            border-radius: 8px;
+            text-align: left;
+            cursor: pointer;
+            font-weight: 500;
+            transition: border-color 0.3s;
+        }
+
+        .menu-btn:hover {
+            border-color: var(--primary);
+        }
+
+        .logout-btn {
+            background: transparent;
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Auth Screen (Login & Register) -->
-    <div id="auth-container">
-        <div class="auth-card">
-            <div class="auth-logo-box">⚡</div>
-            <div class="auth-title">Greenara</div>
-            <div class="auth-sub">Kenya's Digital Asset Tap & Earn Platform</div>
-            
-            <div class="auth-tabs">
-                <button class="auth-tab" id="tab-login-btn" onclick="switchAuthMode('login')">Login</button>
-                <button class="auth-tab active" id="tab-reg-btn" onclick="switchAuthMode('register')">Register</button>
-            </div>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-icon">⚡</div>
+            <h1>Greenara</h1>
+            <p>Kenya's Digital Asset Tap & Earn Platform</p>
+        </div>
 
-            <div id="auth-error" style="color: #ff4d4d; font-size: 0.85rem; margin-bottom: 10px; text-align: center; display: none;"></div>
+        <!-- Connection Error Banner -->
+        <div id="errorBanner" class="error-banner">
+            Connection error. Make sure backend is running on Render.
+        </div>
+
+        <!-- Auth View (Login / Register) -->
+        <div id="authView" class="auth-view active">
+            <div class="tabs">
+                <button id="loginTabBtn" class="tab-btn active" onclick="switchTab('login')">Login</button>
+                <button id="registerTabBtn" class="tab-btn" onclick="switchTab('register')">Register</button>
+            </div>
 
             <div class="form-group">
-                <label>Mobile Number / Username</label>
-                <input type="text" id="auth-username" class="form-control" placeholder="e.g. 0712345678">
+                <label id="usernameLabel">Mobile Number / Username</label>
+                <input type="text" id="userInput" placeholder="e.g. 0712345678">
             </div>
+
             <div class="form-group">
                 <label>Access Password</label>
-                <input type="password" id="auth-password" class="form-control" placeholder="••••••••">
+                <input type="password" id="passInput" placeholder="••••••••">
             </div>
-            
-            <button id="auth-submit-btn" class="btn btn-green" style="width: 100%; margin-top: 10px;" onclick="handleAuthSubmit()">Register & Start Earning</button>
+
+            <button id="authSubmitBtn" class="btn-primary" onclick="handleAuth()">Register & Start Earning</button>
+        </div>
+
+        <!-- Dashboard View -->
+        <div id="dashboardView" class="dashboard-view">
+            <div class="balance-card">
+                <p style="margin:0 0 5px 0; font-size:12px; color:var(--text-muted);">Available Balance</p>
+                <h3 id="userBalance">0.00 Ksh</h3>
+            </div>
+
+            <div class="menu-grid">
+                <button class="menu-btn" onclick="alert('Tap mining levels active!')">⚡ Earning Asset Levels</button>
+                <button class="menu-btn" onclick="alert('Activation request screen')">📥 Deposit / Top Up</button>
+                <button class="menu-btn" onclick="alert('Withdrawal request screen')">💸 Withdraw Funds</button>
+                <button class="menu-btn" onclick="alert('Support ticket screen')">💬 Send Complaint / Ticket</button>
+            </div>
+
+            <button class="menu-btn logout-btn" onclick="handleLogout()">🚪 Logout</button>
         </div>
     </div>
-
-    <!-- Header -->
-    <header>
-        <div class="brand-wrapper">
-            <div class="header-logo-box">⚡</div>
-            <div class="brand-info">
-                <h1>Greenara</h1>
-                <span>Verified KES Earning System</span>
-            </div>
-        </div>
-        <div class="user-pill">
-            <span>👤 <span id="display-user">User</span></span>
-            <span>💰 <span id="user-balance">30.00</span> Ksh</span>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <div class="main-container">
-        <div class="banner">
-            <h3>How to Activate Levels & Start Earning</h3>
-            <p>Level 1 (Iron Box) is completely free! Tap your 6 daily taps to collect 5 Ksh per tap. Higher levels require payment via Lipa na M-Pesa (Paybill 522533, Account 8012296). Once approved by Customer Support, your deposit fee is instantly credited to your dashboard balance!</p>
-        </div>
-
-        <div class="action-grid">
-            <button class="btn btn-green" onclick="openDepositModal()">Deposit / Top Up</button>
-            <button class="btn btn-gold" onclick="openWithdrawModal()">Withdraw Funds</button>
-            <button class="btn btn-outline" onclick="openComplaintModal()">💬 Send Complaint / Ticket</button>
-        </div>
-
-        <div class="section-heading">
-            <span>Earning Asset Levels</span>
-        </div>
-        <div class="levels-grid" id="levels-container"></div>
-    </div>
-
-    <!-- Modals -->
-    <div id="payment-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="payment-modal-title">Level Activation</h2>
-                <button class="close-btn" onclick="closeModal('payment-modal')">&times;</button>
-            </div>
-            <div class="mpesa-instruction">
-                <div class="mpesa-brand">LIPA NA M-PESA</div>
-                <p><strong>Paybill:</strong> 522533</p>
-                <p><strong>Account Number:</strong> 8012296</p>
-                <p id="payment-amount-display" style="color: var(--gold); margin-top: 10px; font-weight: 700;"></p>
-            </div>
-            <div class="form-group">
-                <label>M-Pesa Confirmation Code</label>
-                <input type="text" id="mpesa-code-input" class="form-control" placeholder="e.g. QWE1234XYZ">
-            </div>
-            <button class="btn btn-green" style="width: 100%;" onclick="submitActivationRequest()">Submit Request to Support</button>
-        </div>
-    </div>
-
-    <div id="complaint-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Submit Support Ticket</h2>
-                <button class="close-btn" onclick="closeModal('complaint-modal')">&times;</button>
-            </div>
-            <div class="form-group">
-                <label>Describe your issue</label>
-                <textarea id="complaint-text" class="form-control" rows="4" placeholder="Type your issue..."></textarea>
-            </div>
-            <button class="btn btn-green" style="width: 100%;" onclick="submitComplaint()">Send to Support</button>
-        </div>
-    </div>
-
-    <!-- Admin Support Dashboard Modal -->
-    <div id="admin-modal" class="modal">
-        <div class="modal-content" style="max-width: 950px;">
-            <div class="modal-header">
-                <h2>Customer Support & Admin Center</h2>
-                <button class="close-btn" onclick="closeModal('admin-modal')">&times;</button>
-            </div>
-            <div class="tab-nav">
-                <button class="tab-btn active" onclick="switchAdminTab('requests', this)">Activation Requests (<span id="req-count">0</span>)</button>
-                <button class="tab-btn" onclick="switchAdminTab('withdrawals', this)">Withdrawal Requests (<span id="withdraw-count">0</span>)</button>
-                <button class="tab-btn" onclick="switchAdminTab('users', this)">Users (<span id="user-count">0</span>)</button>
-                <button class="tab-btn" onclick="switchAdminTab('complaints', this)">Complaints (<span id="comp-count">0</span>)</button>
-            </div>
-
-            <div id="admin-tab-requests" class="admin-section">
-                <table class="admin-table">
-                    <thead><tr><th>User</th><th>Level</th><th>Activation</th><th>Deposit</th><th>M-Pesa Code</th><th>Action</th></tr></thead>
-                    <tbody id="admin-requests-tbody"></tbody>
-                </table>
-            </div>
-            <div id="admin-tab-withdrawals" class="admin-section hidden">
-                <table class="admin-table">
-                    <thead><tr><th>User</th><th>Amount (Ksh)</th><th>Status</th><th>Action</th></tr></thead>
-                    <tbody id="admin-withdrawals-tbody"></tbody>
-                </table>
-            </div>
-            <div id="admin-tab-users" class="admin-section hidden">
-                <table class="admin-table">
-                    <thead><tr><th>Username</th><th>Levels Unlocked</th><th>Balance</th><th>Status</th></tr></thead>
-                    <tbody id="admin-users-tbody"></tbody>
-                </table>
-            </div>
-            <div id="admin-tab-complaints" class="admin-section hidden">
-                <table class="admin-table">
-                    <thead><tr><th>User</th><th>Message</th><th>Action</th></tr></thead>
-                    <tbody id="admin-complaints-tbody"></tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <div class="floating-support" onclick="openAdminPortal()" title="Customer Support">💬</div>
 
     <script>
-        // Connected to your live Render backend
-        const BACKEND_URL = "https://greenara-backend-db1u.onrender.com";
+        // POINTED TO YOUR NEW RENDER BACKEND
+        const BACKEND_URL = "https://greenara-backend-1.onrender.com";
 
+        let currentMode = 'login'; // 'login' or 'register'
         let currentUser = null;
-        let userBalance = 30.00;
-        let isLoginMode = false;
 
-        const levelsData = [
-            { id: 1, name: "Iron Box", img: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=600&auto=format&fit=crop&q=80", activationFee: 0, depositFee: 0, dailyPayout: 30, perTap: 5, tapsLeft: 6 },
-            { id: 2, name: "Microwave", img: "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&auto=format&fit=crop&q=80", activationFee: 800, depositFee: 2000, dailyPayout: 150, perTap: 25, tapsLeft: 6 },
-            { id: 3, name: "Fridge", img: "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&auto=format&fit=crop&q=80", activationFee: 2500, depositFee: 5000, dailyPayout: 500, perTap: 83, tapsLeft: 6 },
-            { id: 4, name: "Samsung Phone", img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=80", activationFee: 6000, depositFee: 12000, dailyPayout: 1350, perTap: 225, tapsLeft: 6 },
-            { id: 5, name: "Sport Bike", img: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&auto=format&fit=crop&q=80", activationFee: 35000, depositFee: 70000, dailyPayout: 9000, perTap: 1500, tapsLeft: 6 },
-            { id: 6, name: "Lamborghini", img: "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=600&auto=format&fit=crop&q=80", activationFee: 80000, depositFee: 150000, dailyPayout: 22500, perTap: 3750, tapsLeft: 6 }
-        ];
+        function switchTab(mode) {
+            currentMode = mode;
+            const loginBtn = document.getElementById('loginTabBtn');
+            const registerBtn = document.getElementById('registerTabBtn');
+            const submitBtn = document.getElementById('authSubmitBtn');
 
-        let selectedLevelForPayment = null;
-
-        function switchAuthMode(mode) {
-            isLoginMode = (mode === 'login');
-            document.getElementById('tab-login-btn').classList.toggle('active', isLoginMode);
-            document.getElementById('tab-reg-btn').classList.toggle('active', !isLoginMode);
-            document.getElementById('auth-submit-btn').innerText = isLoginMode ? "Login to Account" : "Register & Start Earning";
+            if (mode === 'login') {
+                loginBtn.classList.add('active');
+                registerBtn.classList.remove('active');
+                submitBtn.innerText = 'Login to Account';
+            } else {
+                registerBtn.classList.add('active');
+                loginBtn.classList.remove('active');
+                submitBtn.innerText = 'Register & Start Earning';
+            }
         }
 
-        async function handleAuthSubmit() {
-            let u = document.getElementById('auth-username').value.trim();
-            let p = document.getElementById('auth-password').value.trim();
-            let err = document.getElementById('auth-error');
+        async function handleAuth() {
+            const username = document.getElementById('userInput').value.trim();
+            const password = document.getElementById('passInput').value.trim();
+            const errorBanner = document.getElementById('errorBanner');
 
-            if(!u || !p) {
-                err.innerText = "Please fill in all fields.";
-                err.style.display = 'block';
+            if (!username || !password) {
+                alert('Please fill in all fields.');
                 return;
             }
 
-            let endpoint = isLoginMode ? `${BACKEND_URL}/api/login` : `${BACKEND_URL}/api/register`;
+            const endpoint = currentMode === 'login' ? '/api/login' : '/api/register';
+
             try {
-                let res = await fetch(endpoint, {
+                errorBanner.style.display = 'none';
+                const response = await fetch(`${BACKEND_URL}${endpoint}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username: u, password: p })
+                    body: JSON.stringify({ username, password })
                 });
-                let data = await res.json();
-                if(data.success) {
-                    currentUser = data.user.username;
-                    userBalance = data.user.balance;
-                    document.getElementById('display-user').innerText = currentUser;
-                    document.getElementById('user-balance').innerText = userBalance.toFixed(2);
-                    document.getElementById('auth-container').style.display = 'none';
-                    renderLevels();
+
+                const data = await response.json();
+
+                if (data.success) {
+                    currentUser = data.user;
+                    showDashboard();
                 } else {
-                    err.innerText = data.message;
-                    err.style.display = 'block';
+                    alert(data.message || 'Authentication failed.');
                 }
-            } catch(e) {
-                err.innerText = "Connection error. Make sure backend is running on Render.";
-                err.style.display = 'block';
+            } catch (err) {
+                console.error(err);
+                errorBanner.style.display = 'block';
             }
         }
 
-        async function renderLevels() {
+        function showDashboard() {
+            document.getElementById('authView').classList.remove('active');
+            document.getElementById('dashboardView').classList.add('active');
+            document.getElementById('userBalance').innerText = `${currentUser.balance.toFixed(2)} Ksh`;
+        }
+
+        function handleLogout() {
+            currentUser = null;
+            document.getElementById('dashboardView').classList.remove('active');
+            document.getElementById('authView').classList.add('active');
+        }
+
+        // Quick Ping to verify backend connection on load
+        window.addEventListener('DOMContentLoaded', async () => {
             try {
-                let res = await fetch(`${BACKEND_URL}/api/state/${currentUser}`);
-                let data = await res.json();
-                if(!data.success) return;
-
-                let userObj = data.user;
-                userBalance = userObj.balance;
-                document.getElementById('user-balance').innerText = userBalance.toFixed(2);
-
-                let container = document.getElementById('levels-container');
-                container.innerHTML = "";
-
-                levelsData.forEach(lvl => {
-                    let isUnlocked = userObj.levelsUnlocked.includes(lvl.id);
-                    let badgeClass = lvl.id === 1 ? "badge-free" : (isUnlocked ? "badge-active" : "badge-locked");
-                    let badgeText = lvl.id === 1 ? "Level 1 (Free)" : (isUnlocked ? "Unlocked & Active" : "Locked");
-                    let totalFee = lvl.activationFee + lvl.depositFee;
-
-                    container.innerHTML += `
-                        <div class="level-card ${isUnlocked ? 'unlocked' : ''}">
-                            <div class="level-img-wrap">
-                                <img src="${lvl.img}" alt="${lvl.name}">
-                                <span class="status-badge ${badgeClass}">${badgeText}</span>
-                            </div>
-                            <div class="level-body">
-                                <div>
-                                    <div class="level-title">Level ${lvl.id}: ${lvl.name}</div>
-                                    <div class="level-meta">${lvl.id === 1 ? 'Free welcome asset.' : `Total: ${totalFee.toLocaleString()} Ksh`}</div>
-                                    <div class="stat-row"><span>Daily Payout</span><span>${lvl.dailyPayout.toLocaleString()} Ksh (${lvl.perTap} Ksh/tap)</span></div>
-                                </div>
-                                <div>
-                                    ${isUnlocked ? `
-                                        <button class="btn btn-green" style="width: 100%;" onclick="tapAsset(${lvl.id}, ${lvl.perTap})">Tap & Earn (${lvl.perTap} Ksh)</button>
-                                    ` : `
-                                        <button class="btn btn-gold" style="width: 100%;" onclick="openPaymentModal(${lvl.id})">Unlock Level (${totalFee.toLocaleString()} Ksh)</button>
-                                    `}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-            } catch(e) { console.error(e); }
-        }
-
-        function tapAsset(lvlId, perTap) {
-            userBalance += perTap;
-            document.getElementById('user-balance').innerText = userBalance.toFixed(2);
-            alert(`Earned ${perTap} Ksh successfully!`);
-        }
-
-        function openPaymentModal(lvlId) {
-            selectedLevelForPayment = levelsData.find(x => x.id === lvlId);
-            let total = selectedLevelForPayment.activationFee + selectedLevelForPayment.depositFee;
-            document.getElementById('payment-modal-title').innerText = `Unlock Level ${lvlId}: ${selectedLevelForPayment.name}`;
-            document.getElementById('payment-amount-display').innerText = `Total: ${total.toLocaleString()} Ksh`;
-            document.getElementById('payment-modal').style.display = 'flex';
-        }
-
-        function openDepositModal() {
-            selectedLevelForPayment = { id: 'topup', name: 'Account Deposit' };
-            document.getElementById('payment-modal-title').innerText = "Account Deposit via M-Pesa";
-            document.getElementById('payment-amount-display').innerText = "Paybill: 522533 | Account: 8012296";
-            document.getElementById('payment-modal').style.display = 'flex';
-        }
-
-        async function submitActivationRequest() {
-            let code = document.getElementById('mpesa-code-input').value.trim();
-            if(!code) return alert("Enter M-Pesa code.");
-
-            let isTopup = selectedLevelForPayment.id === 'topup';
-            let reqData = {
-                user: currentUser,
-                level: isTopup ? 'General Deposit Top-Up' : `Level ${selectedLevelForPayment.id} (${selectedLevelForPayment.name})`,
-                activationFee: isTopup ? 0 : selectedLevelForPayment.activationFee,
-                depositFee: isTopup ? 1000 : selectedLevelForPayment.depositFee,
-                code: code,
-                status: "Pending"
-            };
-
-            await fetch(`${BACKEND_URL}/api/activation`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(reqData)
-            });
-
-            alert("Activation request sent to Support successfully!");
-            closeModal('payment-modal');
-            document.getElementById('mpesa-code-input').value = "";
-        }
-
-        async function openWithdrawModal() {
-            let amt = prompt("Enter amount to withdraw (Ksh):", userBalance);
-            if(amt && !isNaN(amt) && parseFloat(amt) > 0) {
-                let val = parseFloat(amt);
-                let res = await fetch(`${BACKEND_URL}/api/withdrawal`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ user: currentUser, amount: val, status: "Pending" })
-                });
-                let data = await res.json();
-                if(data.success) {
-                    userBalance = data.balance;
-                    document.getElementById('user-balance').innerText = userBalance.toFixed(2);
-                    alert("Withdrawal request submitted successfully.");
-                }
+                await fetch(`${BACKEND_URL}/`);
+                document.getElementById('errorBanner').style.display = 'none';
+            } catch (e) {
+                document.getElementById('errorBanner').style.display = 'block';
             }
-        }
-
-        async function submitComplaint() {
-            let msg = document.getElementById('complaint-text').value.trim();
-            if(!msg) return;
-            await fetch(`${BACKEND_URL}/api/complaint`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ user: currentUser, message: msg })
-            });
-            alert("Complaint sent.");
-            closeModal('complaint-modal');
-            document.getElementById('complaint-text').value = "";
-        }
-
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-        async function openAdminPortal() {
-            let u = prompt("Enter Support ID:");
-            let p = prompt("Enter Support Password:");
-            if(u === "3879" && p === "Scott@254") {
-                refreshAdminDashboard();
-                document.getElementById('admin-modal').style.display = 'flex';
-            } else if(u !== null) alert("Invalid credentials.");
-        }
-
-        async function refreshAdminDashboard() {
-            let res = await fetch(`${BACKEND_URL}/api/admin/data`);
-            let data = await res.json();
-
-            document.getElementById('req-count').innerText = data.activationRequests.filter(r => r.status === "Pending").length;
-            document.getElementById('withdraw-count').innerText = data.withdrawalRequests.log || data.withdrawalRequests.filter(w => w.status === "Pending").length;
-            document.getElementById('user-count').innerText = data.users.length;
-            document.getElementById('comp-count').innerText = data.complaints.length;
-
-            let reqTbody = document.getElementById('admin-requests-tbody');
-            reqTbody.innerHTML = data.activationRequests.length === 0 ? `<tr><td colspan="6">No requests</td></tr>` : "";
-            data.activationRequests.forEach((req, idx) => {
-                reqTbody.innerHTML += `<tr><td>${req.user}</td><td>${req.level}</td><td>${req.activationFee}</td><td>${req.depositFee}</td><td><code>${req.code}</code></td><td>${req.status === 'Pending' ? `<button class="btn btn-green" onclick="adminApprove(${idx})">Approve</button>` : 'Approved'}</td></tr>`;
-            });
-
-            let wTbody = document.getElementById('admin-withdrawals-tbody');
-            wTbody.innerHTML = data.withdrawalRequests.length === 0 ? `<tr><td colspan="4">No withdrawals</td></tr>` : "";
-            data.withdrawalRequests.forEach((w, idx) => {
-                wTbody.innerHTML += `<tr><td>${w.user}</td><td>${w.amount}</td><td>${w.status}</td><td>${w.status === 'Pending' ? `<button class="btn btn-gold" onclick="adminPayout(${idx})">Payout</button>` : 'Done'}</td></tr>`;
-            });
-
-            let uTbody = document.getElementById('admin-users-tbody');
-            uTbody.innerHTML = "";
-            data.users.forEach(usr => {
-                uTbody.innerHTML += `<tr><td>${usr.username}</td><td>${usr.levelsUnlocked.join(', ')}</td><td>${usr.balance}</td><td>${usr.status}</td></tr>`;
-            });
-
-            let cTbody = document.getElementById('admin-complaints-tbody');
-            cTbody.innerHTML = data.complaints.length === 0 ? `<tr><td colspan="3">No complaints</td></tr>` : "";
-            data.complaints.forEach((c, idx) => {
-                cTbody.innerHTML += `<tr><td>${c.user}</td><td>${c.message}</td><td><button class="btn btn-outline" onclick="adminResolve(${idx})">Resolve</button></td></tr>`;
-            });
-        }
-
-        async function adminApprove(idx) {
-            await fetch(`${BACKEND_URL}/api/admin/approve`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ index: idx }) });
-            refreshAdminDashboard();
-            renderLevels();
-            alert("Approved successfully and user balance credited!");
-        }
-
-        async function adminPayout(idx) {
-            await fetch(`${BACKEND_URL}/api/admin/payout`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ index: idx }) });
-            refreshAdminDashboard();
-            alert("Payout marked successful.");
-        }
-
-        async function adminResolve(idx) {
-            await fetch(`${BACKEND_URL}/api/admin/resolve-complaint`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ index: idx }) });
-            refreshAdminDashboard();
-        }
-
-        function switchAdminTab(name, btn) {
-            document.querySelectorAll('.admin-section').forEach(s => s.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(`admin-tab-${name}`).classList.remove('hidden');
-            btn.classList.add('active');
-        }
+        });
     </script>
 </body>
 </html>
