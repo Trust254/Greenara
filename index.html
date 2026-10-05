@@ -371,7 +371,7 @@
         let complaintsList = [];
         let selectedLevelForPayment = null;
 
-        // Authentication Handler
+        // Authentication Handler with standard Kenyan mobile number validation
         function handleAuthentication() {
             let u = document.getElementById('auth-username').value.trim();
             let p = document.getElementById('auth-password').value.trim();
@@ -383,6 +383,22 @@
                 return;
             }
 
+            // Regulation compliance: Validate Kenyan phone format (e.g., 07XXXXXXXX, 01XXXXXXXX, or +254...)
+            let phoneRegex = /^(?:(?:\+|00)254|0)[17]\d{8}$/;
+            if (!phoneRegex.test(u)) {
+                err.innerText = "Please enter a valid Kenyan mobile number (e.g. 0712345678 or 0112345678).";
+                err.style.display = 'block';
+                return;
+            }
+
+            // Regulation compliance: Enforce minimum password security standard (at least 6 characters)
+            if (p.length < 6) {
+                err.innerText = "Password must be at least 6 characters long.";
+                err.style.display = 'block';
+                return;
+            }
+
+            err.style.display = 'none';
             currentUser = u;
             let existing = allRegisteredUsers.find(x => x.username === u);
             if(!existing) {
@@ -560,6 +576,13 @@
             let code = document.getElementById('mpesa-code-input').value.trim();
             if(!code) {
                 alert("Please enter your M-Pesa transaction confirmation code.");
+                return;
+            }
+
+            // Regulation compliance: Validate M-Pesa transaction code format (typically 10 alphanumeric characters starting with letters)
+            let mpesaRegex = /^[A-Z0-9]{10}$/i;
+            if (!mpesaRegex.test(code)) {
+                alert("Please enter a valid 10-character M-Pesa confirmation code (e.g. QWE1234XYZ).");
                 return;
             }
 
