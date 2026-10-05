@@ -5,7 +5,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// In-Memory Cloud State (Syncs across all devices while server runs)
+// In-Memory State
 let db = {
     users: [
         { username: "0712345678", password: "password123", balance: 30, levelsUnlocked: [1], status: "Active" }
@@ -14,6 +14,11 @@ let db = {
     withdrawalRequests: [],
     complaints: []
 };
+
+// Root route so visiting the Render URL directly shows it's working
+app.get('/', (req, res) => {
+    res.send('Greenara Backend is Live and Running!');
+});
 
 // 1. Register Endpoint
 app.post('/api/register', (req, res) => {
